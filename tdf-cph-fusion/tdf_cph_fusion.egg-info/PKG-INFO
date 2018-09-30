@@ -1,0 +1,12 @@
+Metadata-Version: 1.0
+Name: tdf-cph-fusion
+Version: -python-version-
+Summary: ${description}
+Home-page: ${source_url}
+Author: ${author}
+Author-email: ${author_email}
+License: MIT
+Description: Python Template
+        
+        TODO: Write this file
+Platform: UNKNOWN

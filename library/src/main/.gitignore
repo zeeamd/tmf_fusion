@@ -1,0 +1,10 @@
+clouddeploy.egg-info/
+*.pyc
+*.pyo
+.DS_Store
+*.log
+*.egg
+bin/setup/target/
+*.log
+build/
+dist/

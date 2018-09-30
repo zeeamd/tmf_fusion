@@ -1,0 +1,136 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <parent>
+		<groupId>com.nielsen</groupId>
+		<artifactId>tmf_fusion_deployS3</artifactId>
+		<version>0.0.0</version>
+		<relativePath>../</relativePath>
+	</parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tmf_fusion</artifactId>
+    <packaging>pom</packaging>
+
+    
+    <repositories>
+	    <repository>
+		   <id>nielsen.releases</id>
+		   <name>TAM-MAVEN-RELEASES-LOCAL</name>
+		   <url>http://mediaviewscm.enterprisenet.org/artifactory/TAM-MAVEN-RELEASES-LOCAL</url>
+        </repository>
+    </repositories>
+    <build>
+        <plugins>
+            <!-- Artifact Extraction -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                             <artifactItems>
+                                <artifactItem>
+                                    <!--<artifact>com.nielsenmedia.foundations:Dist:1.1.0:tar.gz</artifact>-->
+                                    <groupId>com.nielsenmedia.foundations</groupId>
+                                    <artifactId>Dist</artifactId>
+                                    <version>1.1.0</version>
+                                    <classifier>bundle</classifier>
+                                    <type>tar.gz</type>
+                                    <outputDirectory>filesystem:${project.build.directory}/dependents/</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.nielsenmedia.foundations</groupId>
+                                    <artifactId>Dist</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>bundle</classifier>
+                                    <overWrite>true</overWrite>
+                                    <type>tar.gz</type>
+                                    <outputDirectory>${project.build.directory}/bundle</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Flyway Database Deployment -->
+            
+             <!--  <plugin> 
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                 <version>${flyway.version}</version>
+                <configuration>
+                <driver>com.mysql.jdbc.Driver</driver>
+                 <url>jdbc:mysql://mdl-nonprod-appdev-newvpc-emr-ms.c8ibwewzhjlc.us-east-1.rds.amazonaws.com:3306/simpletest?autoreconnect=true</url>
+                
+                <driver>${database.driver}</driver>
+                <url>${database.url}</url>
+                <username>mdldev</username>
+                <password>3zD8fjcekLdTzJh3</password>
+                    <schemas>
+                        <schema>simpletest</schema>
+                    </schemas>
+                    <locations>
+                        <location>filesystem:${project.build.directory}/dependents/db/migration</location>
+                    </locations>
+                    <encoding>ISO-8859-1</encoding>
+                    <cleanOnValidationError>true</cleanOnValidationError>
+                </configuration>
+				
+				<executions>
+                    <execution>
+                        <id>flyway database migration</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>migrate</goal>
+                            <goal>info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>${mysql.driver.version}</version>
+						<scope>runtime</scope>
+                    </dependency>
+                </dependencies> 
+            </plugin>-->
+            
+            
+         </plugins>
+    </build>
+    <dependencies>
+        <!-- <dependency>
+            <groupId>oracle</groupId>
+            <artifactId>ojdbc6</artifactId>
+            <version>11.2.0.1.0</version>
+        </dependency> -->
+        <dependency><!-- add support for ssh/scp -->
+            <groupId>org.apache.maven.wagon</groupId>
+            <artifactId>wagon-ssh</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+      <!--<dependency>
+         <groupId>com.nielsenmedia.foundations</groupId>
+         <artifactId>Dist</artifactId>
+         <version>1.1.0</version>
+      </dependency>-->
+    </dependencies>
+</project>

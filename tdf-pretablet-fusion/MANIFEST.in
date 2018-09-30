@@ -1,0 +1,3 @@
+include CHANGELOG.md
+include LICENSE
+recursive-include nielsen/watch/platform *

@@ -1,0 +1,171 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+  <!-- =====================================================================
+       BEGIN: Project Generalities
+       ===================================================================== -->
+  <modelVersion>4.0.0</modelVersion>
+	
+ 	<!-- <parent>
+        <artifactId>TestAutomationFW</artifactId>
+        <groupId>WATS-TAM</groupId>
+        <version>1.0.1</version>
+		<relativePath>../../../pom.xml</relativePath>
+    </parent>  -->
+	
+	<groupId>WATS-TAM-s3</groupId>
+	<artifactId>test-automation-aws-s3</artifactId>
+	<version>1.0.1</version>
+	<name>TAM::Wats TAM</name>
+  <!-- <packaging>pom</packaging> -->
+  <!-- =====================================================================
+       END: Project Generalities
+       ===================================================================== -->
+	   
+  <!-- =====================================================================
+       BEGIN: SCM Environment
+       ===================================================================== -->
+  <ciManagement>
+    <system>jenkins</system>
+    <url>https://tamtools.enterprisenet.org:8083/jenkins/</url>
+  </ciManagement>
+  <!-- =====================================================================
+       END: SCM Environment
+       ===================================================================== -->
+
+  <!-- =====================================================================
+       BEGIN: Artifact Distribution
+       ===================================================================== -->
+ <distributionManagement>
+		<repository>
+			<id>nielsen.releases</id>
+			<name>TAM-MAVEN-RELEASES-LOCAL</name>
+			<url>http://mediaviewscm.enterprisenet.org/artifactory/TAMEXT-MAVEN-RELEASES-LOCAL</url>
+		</repository>
+	</distributionManagement>
+  <!-- =====================================================================
+       END: Artifact Distribution
+       ===================================================================== -->
+
+  <!-- =====================================================================
+       BEGIN: Dependency Repositories
+       ===================================================================== -->
+  <repositories>
+    <!-- <repository>
+      <id>snapshots</id>
+      <url>file://${user.home}/.m2/repository/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+    </repository> -->
+    <repository>
+		<id>central</id>
+		<name>TAMEXT-MAVEN-RELEASES-LOCAL</name>
+		<url>http://mediaviewscm.enterprisenet.org/artifactory/TAMEXT-MAVEN-RELEASES-LOCAL</url>
+    </repository> 
+    <repository>
+		<id>nielsen.releases</id>
+		<name>TAM-MAVEN-RELEASES-LOCAL</name>
+		<url>http://mediaviewscm.enterprisenet.org/artifactory/TAM-MAVEN-RELEASES-LOCAL</url>
+	</repository>
+  </repositories>
+  <!-- =====================================================================
+       END: Dependency Repositories
+       ===================================================================== -->
+
+  <!-- =====================================================================
+       BEGIN: Build Plugins
+       ===================================================================== -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>mediaView-virtual-repo</id>
+      <url>http://mediaviewscm.enterprisenet.org/artifactory/repo</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+  <!-- =====================================================================
+       END: Build Plugins
+       ===================================================================== -->
+
+    <!-- =====================================================================
+         BEGIN: Project Dependencies
+         ===================================================================== -->
+  <dependencies>
+	  <dependency>
+        <groupId>WATS-TAM</groupId>
+	    <artifactId>TestAutomationFW</artifactId>
+	    <version>1.0.1</version>
+        <exclusions>
+          <exclusion>
+             <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+          </exclusion>
+          <exclusion>
+             <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-bom</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+          </exclusion>
+           <exclusion>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+          </exclusion>
+        </exclusions>
+    </dependency>
+     <!--<dependency>
+        <groupId>com.nielsenmedia.foundations</groupId>
+	    <artifactId>WeightingEngine</artifactId>
+	    <version>1.1.0</version>
+     </dependency>-->
+    <!--  <dependency>	
+	   <groupId>com.nielsenmedia.foundations</groupId>
+	   <artifactId>design_weights_spark</artifactId>
+	   <version>1.1.0</version>
+     </dependency> -->
+     <!--<dependency>
+	   <groupId>com.nielsenmedia.foundations</groupId>
+       <artifactId>ppm_foundations_spark</artifactId>
+       <version>1.1.0</version>
+     </dependency>-->
+    <!--  <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.347</version>
+        </dependency>
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk-bom</artifactId>
+            <version>1.11.347</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>2.6.0</version>
+        </dependency> -->
+  </dependencies>
+		
+</project>
