@@ -9,7 +9,7 @@ config = {
     'name': "tdf-cph-fusion",
     'description': '${description}',
     'long_description': long_description,
-    'version': '${python_version}',
+    'version': '3',
     'author': '${author}',
     'author_email': '${author_email}',
     'url': '${source_url}',
