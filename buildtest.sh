@@ -1,10 +1,9 @@
 #!/bin/bash
 
-for i in `ls -lrtd */|awk -F' ' '{print $9}'`
+#recursive python wheel creation
+for d in `ls -lrtd */|awk -F' ' '{print $9}'`
 do
-cd $i
-pwd
+cd $d
 python setup.py bdist_wheel
-ls -lrt
 cd -
 done
